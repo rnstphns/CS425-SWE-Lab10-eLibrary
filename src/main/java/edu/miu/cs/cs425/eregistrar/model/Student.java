@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 
 @Data
@@ -23,6 +24,7 @@ public class Student {
     @NotNull
     @NotEmpty
     @NotBlank
+    //TODO validation unique
     private String studentNumber;
 
     @NotNull
@@ -40,13 +42,10 @@ public class Student {
     private double cgpa;
 
     @NotNull
+    @PastOrPresent
     private LocalDate dateOfEnrollment;
 
-//    @OneToOne
-//    @JoinColumn(name = "transcript_id")
-//    private Transcript transcript;
-//
-//    @ManyToOne
-//    @JoinColumn(name="classroomId")
-//    private Classroom currentClassroom;
+    @NotNull
+    //TODO validation "yes" or "no", or work out boolean with web form
+    private boolean isInternational;
 }

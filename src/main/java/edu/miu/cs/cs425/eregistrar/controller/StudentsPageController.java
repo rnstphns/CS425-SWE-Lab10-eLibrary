@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class StudentsPageController {
     @GetMapping(value = {"/eregistrar/students", "/eregistrar/all-students"})
     public String displayStudentsPage(){
-        return "home/students/students";
+        return "students/students";
     }
 }
