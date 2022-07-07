@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <title>Edit Student - eRegistrar</title>
+</head>
+<body>
+<header th:replace="fragments/header :: eregistrar-header"></header>
+<div class="container">
+    <div style="font-size: 1em">
+        <!-- TODO action is broken -->
+        <form id="new-student-form" method="post" action="" th:object="${student}">
+            <fieldset>
+                <legend>Edit Student Form</legend>
+                <!-- TODO th:values-->
+                <div>
+                    <label>First Name*</label>
+                </div>
+                <div>
+                    <input type="text" name="firstName" required th:value="${student.firstName}">
+                </div>
+                <div>
+                    <label>Middle Name</label>
+                </div>
+                <div>
+                    <input type="text" name="middleName">
+                </div>
+                <div>
+                    <label>Last Name*</label>
+                </div>
+                <div>
+                    <input type="text" name="lastName" required>
+                </div>
+                <div>
+                    <label>Student Number*</label>
+                </div>
+                <div>
+                    <input type="text" name="studentNo" required>
+                </div>
+                <div>
+                    <label>CGPA</label>
+                </div>
+                <div>
+                    <input type="text" name="cgpa">
+                </div>
+                <!-- TODO bootstrap fields-->
+                <!-- TODO radio buttons for "international'-->
+            </fieldset>
+            <input type="submit" value="Update Student">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+</div>
+</body>
+</html>
