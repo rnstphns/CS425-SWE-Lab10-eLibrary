@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
-    <title>New Student - eRegistrar</title>
+    <title>Edit Student - eRegistrar</title>
 </head>
 <body>
 <header th:replace="fragments/header :: eregistrar-header"></header>
 <div class="container">
     <div style="font-size: 1em">
         <!-- TODO action is broken -->
-        <form id="new-student-form" method="post" action="/eregistrar/students/new" th:object="${student}">
+        <form id="new-student-form" method="post" action="" th:object="${student}">
             <fieldset>
-                <legend>New Student Form</legend>
+                <legend>Edit Student Form</legend>
                 <!-- TODO th:values-->
                 <div>
                     <label>First Name*</label>
@@ -39,7 +39,7 @@
                     <label>Student Number*</label>
                 </div>
                 <div>
-                    <input type="text" name="studentNumber" required>
+                    <input type="text" name="studentNo" required>
                 </div>
                 <div>
                     <label>CGPA</label>
@@ -47,21 +47,10 @@
                 <div>
                     <input type="text" name="cgpa">
                 </div>
-                <div>
-                    <label>Date Of Enrollment</label>
-                </div>
-                <div>
-                    <input type="date" name="dateOfEnrollment" required>
-                </div>
-                <div class="form-item">
-                    <select class="form-ctrl-sel" name="isInternational" id="isInternational" required>
-                        <option value="">[International Student?]</option>
-                        <option value=true>Yes</option>
-                        <option value=false>No</option>
-                    </select>
-                </div>
+                <!-- TODO bootstrap fields-->
+                <!-- TODO radio buttons for "international'-->
             </fieldset>
-            <input type="submit" value="Add Student">
+            <input type="submit" value="Update Student">
             <input type="reset" value="Reset">
         </form>
     </div>

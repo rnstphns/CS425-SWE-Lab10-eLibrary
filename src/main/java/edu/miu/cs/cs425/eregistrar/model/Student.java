@@ -3,6 +3,7 @@ package edu.miu.cs.cs425.eregistrar.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -39,11 +40,12 @@ public class Student {
     @NotBlank
     private String lastName;
 
-    private double cgpa;
+    private Double cgpa;
 
     @NotNull
-    @PastOrPresent
-    private LocalDate dateOfEnrollment;
+//    @PastOrPresent
+    //TODO change back to LocalDate
+    private String dateOfEnrollment;
 
     @NotNull
     //TODO validation "yes" or "no", or work out boolean with web form

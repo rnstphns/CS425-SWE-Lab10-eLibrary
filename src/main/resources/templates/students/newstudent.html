@@ -4,33 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
     <title>New Student - eRegistrar</title>
 </head>
 <body>
-<header th:replace="fragments/header :: eregistrar-header" ></header>
+<header th:replace="fragments/header :: eregistrar-header"></header>
 <div class="container">
-    <h3>Add/Edit Student Data</h3>
-    <hr/>
     <div style="font-size: 1em">
-        <form id="new-student-form">
-
-
+        <!-- TODO action is broken -->
+        <form id="new-student-form" method="post" action="/eregistrar/students/new" th:object="${student}">
+            <fieldset>
+                <legend>New Student Form</legend>
+                <!-- TODO th:values-->
+                <div>
+                    <label>First Name*</label>
+                </div>
+                <div>
+                    <input type="text" name="firstName" required th:value="${student.firstName}">
+                </div>
+                <div>
+                    <label>Middle Name</label>
+                </div>
+                <div>
+                    <input type="text" name="middleName">
+                </div>
+                <div>
+                    <label>Last Name*</label>
+                </div>
+                <div>
+                    <input type="text" name="lastName" required>
+                </div>
+                <div>
+                    <label>Student Number*</label>
+                </div>
+                <div>
+                    <input type="text" name="studentNumber" required>
+                </div>
+                <div>
+                    <label>CGPA</label>
+                </div>
+                <div>
+                    <input type="text" name="cgpa">
+                </div>
+                <div>
+                    <label>Date Of Enrollment</label>
+                </div>
+                <div>
+                    <input type="date" name="dateOfEnrollment" required>
+                </div>
+                <div class="form-item">
+                    <select class="form-ctrl-sel" name="isInternational" id="isInternational" required>
+                        <option value="">[International Student?]</option>
+                        <option value=true>Yes</option>
+                        <option value=false>No</option>
+                    </select>
+                </div>
+            </fieldset>
+            <input type="submit" value="Add Student">
+            <input type="reset" value="Reset">
         </form>
     </div>
 </div>
-
-<!--    <footer class="footer">-->
-<!--        <div class="container">-->
-<!--            <span class="text-muted">R. Stephens : : : CS425-SWE</span><span style="float:right;" class="text-muted">&copy; July 2022</span>-->
-<!--        </div>-->
-<!--    </footer>-->
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </body>
 </html>
