@@ -70,7 +70,7 @@ public class StudentsPageController {
             return "redirect:/eregistrar/students/all-students";
         }
     }
-    
+
     @GetMapping(value="/delete/{studentId}")
     public String deleteStudent(@PathVariable Long studentId, Model model){
         studentService.deleteStudentById(studentId);

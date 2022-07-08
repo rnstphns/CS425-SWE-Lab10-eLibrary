@@ -26,7 +26,6 @@ public class Student {
 
 
     @NotBlank
-    @UniqueElements
     private String studentNumber;
 
 
