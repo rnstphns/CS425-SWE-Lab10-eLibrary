@@ -33,7 +33,7 @@
                     <th th:text="${student.studentNumber}"></th>
                     <td th:text="${student.firstName} + ' ' + ${student.middleName} + ' ' + ${student.lastName}"></td>
                     <td th:if="${student.cgpa} != null" th:text="${student.cgpa}"></td>
-                    <td th:text="${student.dateOfEnrollment}"></td><!--TODO replace with th:date when fixed-->
+                    <td th:text="${student.dateOfEnrollment}"></td><
                     <td th:text="${student.isInternational}"></td>
                     <td><a th:href="@{'/eregistrar/students/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
                     <td><a th:href="@{'/eregistrar/students/delete/{studentId}'(studentId=${student.studentId})}">Delete</a></td>
