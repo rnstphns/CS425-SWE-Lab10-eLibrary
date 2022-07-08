@@ -1,39 +1,26 @@
-package edu.miu.cs.cs425.eregistrar.model;
+package edu.miu.cs.cs425.eregistrar.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Setter;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
-import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
-@Entity
-@Table(name="students")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentId;
-
-
+public class StudentRequest {
     @NotBlank
     private String studentNumber;
-
 
     @NotBlank
     private String firstName;
 
     private String middleName;
-
 
     @NotBlank
     private String lastName;
