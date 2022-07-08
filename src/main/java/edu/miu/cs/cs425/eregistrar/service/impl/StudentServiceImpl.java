@@ -24,7 +24,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student editStudent(Student student) {
-        //TODO cross-reference with demo
         return studentRepository.save(student);
     }
 

@@ -34,8 +34,8 @@
                     <td th:if="${student.cgpa} != null" th:text="${student.cgpa}"></td>
                     <td th:text="${student.dateOfEnrollment}"></td><!--TODO replace with th:date when fixed-->
                     <td th:text="${student.isInternational}"></td>
-                    <td><a th:href="@{'/edit/{studentId}'(student.studentId)}">Edit</a></td>
-                    <td><a th:href="@{'/delete/{studentId}'(student.studentId)}">Delete</a></td>
+                    <td><a th:href="@{'/eregistrar/students/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
+                    <td><a th:href="@{'/eregistrar/students/delete/{studentId}'(studentId=${student.studentId})}">Delete</a></td>
                 </tr>
             </tbody>
         </table>

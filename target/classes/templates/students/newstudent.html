@@ -12,11 +12,9 @@
 <header th:replace="fragments/header :: eregistrar-header"></header>
 <div class="container">
     <div style="font-size: 1em">
-        <!-- TODO action is broken -->
         <form id="new-student-form" method="post" action="/eregistrar/students/new" th:object="${student}">
             <fieldset>
                 <legend>New Student Form</legend>
-                <!-- TODO th:values-->
                 <div>
                     <label>First Name*</label>
                 </div>
@@ -27,35 +25,35 @@
                     <label>Middle Name</label>
                 </div>
                 <div>
-                    <input type="text" name="middleName">
+                    <input type="text" name="middleName" th:value="${student.middleName}">
                 </div>
                 <div>
                     <label>Last Name*</label>
                 </div>
                 <div>
-                    <input type="text" name="lastName" required>
+                    <input type="text" name="lastName" required th:value="${student.lastName}">
                 </div>
                 <div>
                     <label>Student Number*</label>
                 </div>
                 <div>
-                    <input type="text" name="studentNumber" required>
+                    <input type="text" name="studentNumber" required th:value="${student.studentNumber}">
                 </div>
                 <div>
-                    <label>CGPA</label>
+                    <label>CGPA*</label>
                 </div>
                 <div>
-                    <input type="text" name="cgpa">
+                    <input type="text" name="cgpa" required th:value="${student.cgpa}">
                 </div>
                 <div>
-                    <label>Date Of Enrollment</label>
+                    <label>Date Of Enrollment*</label>
                 </div>
                 <div>
-                    <input type="date" name="dateOfEnrollment" required>
+                    <input type="date" name="dateOfEnrollment" required th:value="${student.dateOfEnrollment}">
                 </div>
                 <div class="form-item">
-                    <select class="form-ctrl-sel" name="isInternational" id="isInternational" required>
-                        <option value="">[International Student?]</option>
+                    <select class="form-ctrl-sel" name="isInternational" required th:value="${student.isInternational}">
+                        <option value="">[International Student?]*</option>
                         <option value=true>Yes</option>
                         <option value=false>No</option>
                     </select>

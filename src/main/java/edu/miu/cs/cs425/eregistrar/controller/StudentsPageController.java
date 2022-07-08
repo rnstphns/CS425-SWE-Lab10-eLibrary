@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value={"/eregistrar", "/eregistrar/students"})
+@RequestMapping(value={"/eregistrar/students"})
 public class StudentsPageController {
 
     @Autowired
@@ -42,14 +42,9 @@ public class StudentsPageController {
             System.out.println(bindingResult.getAllErrors());
 
             return "students/newstudent";
-        }
-        //TODO fix null bug
-//        if(student.getCgpa() != null || student.getMiddleName()!= null){
-//
-//        }
-        else {
+        } else {
             studentService.addNewStudent(student);
-            return "redirect:/eregistrar/all-students";
+            return "redirect:/eregistrar/students/all-students";
         }
     }
     @GetMapping(value={"/edit/{studentId}"})
@@ -57,29 +52,29 @@ public class StudentsPageController {
         var student = studentService.searchStudentsById(studentId);
         if (student != null) {
             model.addAttribute("student", student);
-            return "students/edit";
+            return "/students/edit";
         }else{
-            return "redirect:/eregistrar/all-students";
+            return "redirect:/eregistrar/students/all-students";
         }
     }
 
-    @PostMapping(value={"/edit"})
+    @PostMapping(value={"/update"})
     public String updateStudent(@Valid @ModelAttribute("student") Student student,
                                 BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("student", student);
             model.addAttribute("error", bindingResult.getAllErrors());
             return "students/edit";
-        }//TODO null bug
-        else {
+        } else {
             studentService.addNewStudent(student);
-            return "redirect:/eregistrar/all-students";
+            return "redirect:/eregistrar/students/all-students";
         }
     }
+    
     @GetMapping(value="/delete/{studentId}")
     public String deleteStudent(@PathVariable Long studentId, Model model){
         studentService.deleteStudentById(studentId);
-        return "redirect:/eregistrar/all-students";
+        return "redirect:/eregistrar/students/all-students";
     }
 
 

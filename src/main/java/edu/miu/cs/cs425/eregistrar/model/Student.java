@@ -3,7 +3,9 @@ package edu.miu.cs.cs425.eregistrar.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,24 +24,22 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
 
-    @NotNull
-    @NotEmpty
+
     @NotBlank
-    //TODO validation unique
+    @UniqueElements
     private String studentNumber;
 
-    @NotNull
-    @NotEmpty
+
     @NotBlank
     private String firstName;
 
     private String middleName;
 
-    @NotNull
-    @NotEmpty
+
     @NotBlank
     private String lastName;
 
+    @Nullable
     private Double cgpa;
 
     @NotNull
@@ -48,6 +48,5 @@ public class Student {
     private String dateOfEnrollment;
 
     @NotNull
-    //TODO validation "yes" or "no", or work out boolean with web form
     private boolean isInternational;
 }
