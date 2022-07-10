@@ -10,8 +10,18 @@
 <body>
 <header th:replace="fragments/header :: eregistrar-header" ></header>
 <div class="container">
-    <h3>All Students</h3>
-    <hr/>
+    <h3>Students</h3>
+    <form id ="searchStudentFrom" method="get" action="/eregistrar/students/search">
+        <div style="margin-top:1em;" class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" name="searchString" id="searchString" th:value="${searchString}" autofocus>
+                <div class="input-group-append">
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr>
     <div style="font-size: 1em">
         <table id="student-table" class = "table table-striped">
              <thead>
@@ -24,7 +34,6 @@
                     <th>International</th>
                     <th></th>
                     <th></th>
-
                 </tr>
              </thead>
             <tbody>

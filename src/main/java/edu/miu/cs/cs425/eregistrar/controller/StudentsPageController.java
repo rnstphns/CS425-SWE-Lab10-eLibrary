@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value={"/eregistrar/students"})
@@ -77,5 +78,14 @@ public class StudentsPageController {
         return "redirect:/eregistrar/students/all-students";
     }
 
-    //TODO search impl here and in fragment, make work date parsing
+    @GetMapping(value="/search")
+    public ModelAndView searchStudents(@RequestParam String searchString){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Student> students = studentService.searchStudents(searchString);
+        modelAndView.addObject("students", students);
+        modelAndView.addObject("searchstring", searchString);
+        modelAndView.addObject("studentsCount", students.size());
+        modelAndView.setViewName("students/students");
+        return modelAndView;
+    }
 }

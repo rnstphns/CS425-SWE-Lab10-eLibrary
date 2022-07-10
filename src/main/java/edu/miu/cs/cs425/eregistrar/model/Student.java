@@ -48,4 +48,5 @@ public class Student {
 
     @NotNull
     private boolean isInternational;
+    //TODO this value is being saved as false in new and edit forms
 }

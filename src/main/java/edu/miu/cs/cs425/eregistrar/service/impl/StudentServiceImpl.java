@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @Service
@@ -35,6 +38,28 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAll(Sort.by("lastName", "dateOfEnrollment"));
+    }
+
+    @Override
+    public List<Student> searchStudents(String searchString) {
+        if(isDate(searchString)) {
+            return studentRepository.findAllByDateOfEnrollment(LocalDate.parse(searchString, DateTimeFormatter.ISO_DATE));
+        }else{
+            return studentRepository.findAllByFirstNameOrMiddleNameOrLastName(searchString, searchString, searchString);
+        }
+    }
+
+    private boolean isDate(String searchString){
+        boolean isParseableAsDate = false;
+        try{
+            LocalDate.parse(searchString, DateTimeFormatter.ISO_DATE);
+            isParseableAsDate = true;
+        }catch(Exception exc){
+            if(exc instanceof DateTimeParseException){
+                isParseableAsDate = false;
+            }
+        }
+        return isParseableAsDate;
     }
 
 

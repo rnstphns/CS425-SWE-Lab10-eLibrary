@@ -11,4 +11,5 @@ public interface StudentService {
     Student editStudent(Student student);
     Student searchStudentsById(Long studentId);
     List<Student> getAllStudents();
+    List<Student> searchStudents(String searchString);
 }

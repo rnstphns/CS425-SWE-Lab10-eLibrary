@@ -1,4 +1,4 @@
-# CS425-SWE-Lab10-eLibrary
-eLibrary webapp using SpringBoot
+# CS425-SWE-Lab10-eRegistrar
+eRegistrar webapp using SpringBoot
 
 end-to-end monolithic architecture
