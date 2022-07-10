@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value={"/eregistrar/students"})
+@RequestMapping(value={"/eregistrar/secured/students", "/secured/students"})
 public class StudentsPageController {
 
     @Autowired
@@ -45,7 +45,7 @@ public class StudentsPageController {
             return "students/newstudent";
         } else {
             studentService.addNewStudent(student);
-            return "redirect:/eregistrar/students/all-students";
+            return "redirect:/eregistrar/secured/students/all-students";
         }
     }
     @GetMapping(value={"/edit/{studentId}"})
@@ -55,7 +55,7 @@ public class StudentsPageController {
             model.addAttribute("student", student);
             return "/students/edit";
         }else{
-            return "redirect:/eregistrar/students/all-students";
+            return "redirect:/eregistrar/secured/students/all-students";
         }
     }
 
@@ -68,14 +68,14 @@ public class StudentsPageController {
             return "students/edit";
         } else {
             studentService.addNewStudent(student);
-            return "redirect:/eregistrar/students/all-students";
+            return "redirect:/eregistrar/secured/students/all-students";
         }
     }
 
     @GetMapping(value="/delete/{studentId}")
     public String deleteStudent(@PathVariable Long studentId, Model model){
         studentService.deleteStudentById(studentId);
-        return "redirect:/eregistrar/students/all-students";
+        return "redirect:/eregistrar/secured/students/all-students";
     }
 
     @GetMapping(value="/search")
@@ -85,7 +85,7 @@ public class StudentsPageController {
         modelAndView.addObject("students", students);
         modelAndView.addObject("searchstring", searchString);
         modelAndView.addObject("studentsCount", students.size());
-        modelAndView.setViewName("students/students");
+        modelAndView.setViewName("secured/students/students");
         return modelAndView;
     }
 }
