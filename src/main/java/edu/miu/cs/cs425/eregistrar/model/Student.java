@@ -3,6 +3,7 @@ package edu.miu.cs.cs425.eregistrar.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.asm.Advice;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
@@ -42,9 +43,9 @@ public class Student {
     private Double cgpa;
 
     @NotNull
-//    @PastOrPresent
-    //TODO change back to LocalDate
-    private String dateOfEnrollment;
+    @PastOrPresent
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate dateOfEnrollment;
 
     @NotNull
     private boolean isInternational;

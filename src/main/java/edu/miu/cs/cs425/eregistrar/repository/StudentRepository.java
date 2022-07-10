@@ -10,5 +10,4 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> searchStudentsByLastName(String lName);
 
-
 }

@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value={"/eregistrar/api/students"})
+@RequestMapping(value={"/eregistrar/api/student"})
 public class StudentRestController {
 
     @Autowired
