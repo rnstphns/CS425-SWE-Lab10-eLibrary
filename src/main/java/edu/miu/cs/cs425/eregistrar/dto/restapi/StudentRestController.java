@@ -1,4 +1,4 @@
-package edu.miu.cs.cs425.eregistrar.controller.restapi;
+package edu.miu.cs.cs425.eregistrar.dto.restapi;
 
 import edu.miu.cs.cs425.eregistrar.dto.StudentRequest;
 import edu.miu.cs.cs425.eregistrar.exception.StudentNotFoundException;
@@ -44,9 +44,12 @@ public class StudentRestController {
     }
 
     @DeleteMapping(value="/delete/{studentId}")
-    public ResponseEntity.BodyBuilder deleteStudent(@PathVariable Long studentId){
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long studentId) throws StudentNotFoundException{
+        var student = studentService.getStudentsById(studentId);
+        if(student == null)
+            throw new StudentNotFoundException(String.format("Student with ID %d not found"));
         studentService.deleteStudentById(studentId);
-        return ResponseEntity.status(HttpStatus.OK);
+        return ResponseEntity.noContent().build();
     }
 
 
